@@ -2,6 +2,7 @@ import React, { useState }  from 'react';
 import {Text} from 'react-native';
 import {CalculatorView} from "./Calculator.component";
 import {CalculatorScreenStyled} from "./Calculator.styled";
+import {theme} from "../../styles/theme";
 
 export const CalculatorScreen = () => {
 
@@ -9,6 +10,10 @@ export const CalculatorScreen = () => {
     const [secondNumber, setSecondNumber] = useState("");
     const [operation, setOperation] = useState("");
     const [result, setResult] = useState<Number | null>(null);
+    const [isTruePlus, setIsTruePlus] = useState(false);
+    const [isTrueMinus, setIsTrueMinus] = useState(false);
+    const [isTrueMultiply, setIsTrueMultiply] = useState(false);
+    const [isTrueDivide, setIsTrueDivide] = useState(false);
 
     const handleNumberPress = (buttonValue: string) => {
         if (firstNumber.length < 10) {
@@ -22,22 +27,56 @@ export const CalculatorScreen = () => {
         setOperation(buttonValue);
         setSecondNumber(firstNumber);
         setFirstNumber(secondNumber);
-        setFirstNumber("");
     };
 
+    const handleOperationPressPlus = (buttonValue: string) => {
+        handleOperationPress(buttonValue);
+        setIsTruePlus(true)
+        setIsTrueMinus(false);
+        setIsTrueDivide(false);
+        setIsTrueMultiply(false);
+    };
+
+    const handleOperationPressMinus = (buttonValue: string) => {
+        handleOperationPress(buttonValue);
+        setIsTrueMinus(true);
+        setIsTruePlus(false);
+        setIsTrueDivide(false);
+        setIsTrueMultiply(false);
+    };
+
+    const handleOperationPressMultiply = (buttonValue: string) => {
+        handleOperationPress(buttonValue);
+        setIsTrueMultiply(true);
+        setIsTruePlus(false);
+        setIsTrueMinus(false);
+        setIsTrueDivide(false);
+    };
+
+    const handleOperationPressDivide = (buttonValue: string) => {
+        handleOperationPress(buttonValue);
+        setIsTrueDivide(true);
+        setIsTruePlus(false);
+        setIsTrueMinus(false);
+        setIsTrueMultiply(false);
+    };
     const handleClearPress = () => {
         setFirstNumber("");
         setSecondNumber("");
         setOperation("");
         setResult(null);
+        setIsTruePlus(false);
+        setIsTrueMinus(false);
+        setIsTrueDivide(false);
+        setIsTrueMultiply(false);
     };
 
     const firstNumberDisplay = () => {
         if (result !== null) {
             return (
                 <Text style={result < 99999
-                    ? [CalculatorScreenStyled.screenFirstNumber, {color: "black"}]
-                    : [CalculatorScreenStyled.screenFirstNumber, {fontSize: 50, color: "black"}]
+                    ? [CalculatorScreenStyled.screenFirstNumber, {color: theme.colors.whiteColor}]
+                    : [CalculatorScreenStyled.screenFirstNumber, {fontSize: 50, color: theme.colors.whiteColor}]
                 }>
                     {result?.toString()}
                 </Text>
@@ -99,6 +138,10 @@ export const CalculatorScreen = () => {
 
     return (
         <CalculatorView
+            isTruePlus={isTruePlus}
+            isTrueMinus={isTrueMinus}
+            isTrueDivide={isTrueDivide}
+            isTrueMultiply={isTrueMultiply}
             firstNumber={firstNumber}
             setFirstNumber={setFirstNumber}
             secondNumber={secondNumber}
@@ -106,6 +149,10 @@ export const CalculatorScreen = () => {
             getResult={getResult}
             handleNumberPress={handleNumberPress}
             handleOperationPress={handleOperationPress}
+            handleOperationPressPlus={handleOperationPressPlus}
+            handleOperationPressMinus={handleOperationPressMinus}
+            handleOperationPressMultiply={handleOperationPressMultiply}
+            handleOperationPressDivide={handleOperationPressDivide}
             handleClearPress={handleClearPress}
             firstNumberDisplay={firstNumberDisplay}
         />
