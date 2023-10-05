@@ -7,7 +7,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import {CalculatorScreen} from "./src/Calculator.container";
+import {CalculatorScreen} from "./src/components/calculatorComponent/Calculator.container";
 
 
 export const App = () => {
