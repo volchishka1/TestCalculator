@@ -13,7 +13,7 @@ import {CalculatorScreen} from "./src/Calculator.container";
 export const App = () => {
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.backgroundColor}>
       <View style={styles.backgroundColor}>
         <CalculatorScreen />
       </View>
@@ -23,11 +23,11 @@ export const App = () => {
 
 const styles = StyleSheet.create({
   backgroundColor: {
-    backgroundColor: "black",
+    backgroundColor: "transparent",
     height: "100%",
     width: "100%",
-    // flexDirection: "row",
-    alignItems: "flex-end"
+    bottom: 10,
+    alignItems: "center"
   },
 });
 

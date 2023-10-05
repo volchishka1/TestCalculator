@@ -28,6 +28,47 @@ export const CalculatorView = () => {
         setResult(null);
     };
 
+    const firstNumberDisplay = () => {
+         if (result !== null) {
+             return (
+                 <Text style={result < 99999
+                     ? [CalculatorScreenStyled.screenFirstNumber, {color: "black"}]
+                     : [CalculatorScreenStyled.screenFirstNumber, {fontSize: 50, color: "black"}]
+                 }>
+                     {result?.toString()}
+                 </Text>
+             );
+         }
+         if (firstNumber && firstNumber.length < 6) {
+                return (
+                    <Text style={CalculatorScreenStyled.screenFirstNumber}>
+                        {firstNumber}
+                    </Text>
+                );
+            }
+            if (firstNumber === "") {
+                return (
+                    <Text style={CalculatorScreenStyled.screenFirstNumber}>
+                        {"0"}
+                    </Text>
+                    );
+            }
+            if (firstNumber.length > 5 && firstNumber.length < 8) {
+                return (
+                    <Text style={[CalculatorScreenStyled.screenFirstNumber, {fontSize: 70}]}>
+                        {firstNumber}
+                    </Text>
+                );
+            }
+            if(firstNumber.length > 7) {
+                return (
+                    <Text style={[CalculatorScreenStyled.screenFirstNumber, {fontSize: 50}]}>
+                        {firstNumber}
+                    </Text>
+                );
+            }
+    };
+
     const getResult = () => {
         switch (operation) {
             case "+":
@@ -52,40 +93,21 @@ export const CalculatorView = () => {
                 break;
         }};
 
-    const firstNumberDisplay = () => {
-        if (result !== null) {
-            return <Text style={result < 99999 ? [CalculatorScreenStyled.screenFirstNumber] : [CalculatorScreenStyled.screenFirstNumber, {fontSize: 50}]}>{result?.toString()}</Text>
-        if (firstNumber && firstNumber.length < 6) {
-            return <Text style={CalculatorScreenStyled.screenFirstNumber}>{firstNumber}</Text>
-        }
-        if (firstNumber === "") {
-            return <Text style={CalculatorScreenStyled.screenFirstNumber}>{"0"}</Text>
-        }
-        if (firstNumber.length > 5 && firstNumber.length < 8) {
-            return (
-                <Text style={[CalculatorScreenStyled.screenFirstNumber, {fontSize: 70}]}>{firstNumber}</Text>
-            );
-        }
-        if(firstNumber.length > 7) {
-            return (
-                <Text style={[CalculatorScreenStyled.screenFirstNumber, {fontSize: 50}]}>{firstNumber}</Text>
-            );
-        }
-        };
-
-    };
 
     return (
-        <View style={{position: "absolute", bottom: 0}}>
+        <View style={{position: "absolute", bottom: 0, width: "90%"}}>
             <View
                 style={{
                     height: 120,
-                    width: "90%",
+                    width: "95%",
                     justifyContent: "flex-end",
-                    alignItems: "center",
+                    alignSelf: "center",
                 }}
             >
-                <Text style={CalculatorScreenStyled.screenSecondNumber}>{secondNumber}</Text>
+                <Text style={CalculatorScreenStyled.screenSecondNumber}>
+                    {secondNumber}
+                    <Text style={{color: "black", fontSize: 50, fontWeight: "500"}}>{operation}</Text>
+                </Text>
                 {firstNumberDisplay()}
             </View>
             <View style={CalculatorScreenStyled.topContainer}>
