@@ -8,24 +8,33 @@ export type CustomButtonProps = {
     isOrange?: boolean;
     isGrey?: boolean;
     isDarkGrey?: boolean;
+    isTruePlus?: boolean;
+    isTrueMinus?: boolean;
+    isTrueDivide?: boolean;
+    isTrueMultiply?: boolean;
+
 }
 
 export const ButtonComponent: FC<CustomButtonProps> = (props) => {
-    const {buttonText, isOrange, isGrey, onPress, isDarkGrey} = props;
+    const {buttonText, isOrange, isGrey, onPress, isDarkGrey, isTruePlus, isTrueMinus, isTrueMultiply, isTrueDivide} = props;
 
     return (
         <TouchableOpacity
             style={
-                isGrey
-                ? buttonStyle.buttonStyleGrey
-                : isOrange
-                ? buttonStyle.buttonStyleOrange
-                : buttonStyle.buttonStyleDarkGrey
+                    isTruePlus || isTrueMinus || isTrueDivide || isTrueMultiply
+                    ? buttonStyle.buttonStyleWhite
+                    : isGrey
+                    ? buttonStyle.buttonStyleGrey
+                    : isOrange
+                    ? buttonStyle.buttonStyleOrange
+                    : buttonStyle.buttonStyleDarkGrey
             }
             onPress={onPress}
         >
             <Text style={
-                    isDarkGrey || isOrange
+                    isTruePlus || isTrueMinus || isTrueDivide || isTrueMultiply
+                    ? buttonStyle.buttonTextOrange
+                    : isDarkGrey || isOrange
                     ? buttonStyle.buttonTextWhite
                     : buttonStyle.buttonTextDarkGrey
             }>
