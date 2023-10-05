@@ -1,7 +1,7 @@
 import {StyleSheet, TextStyle, ViewStyle} from "react-native";
-import {theme} from "../theme";
+import {theme} from "../styles/theme";
 
-export type ButtonTextStyles = {
+export type ButtonStyles = {
     buttonTextWhite: TextStyle;
     buttonTextDarkGrey: TextStyle;
     buttonStyleOrange: ViewStyle;
@@ -9,7 +9,7 @@ export type ButtonTextStyles = {
     buttonStyleDarkGrey: ViewStyle;
 };
 
-export const buttonStyle = StyleSheet.create<ButtonTextStyles>({
+export const buttonStyle = StyleSheet.create<ButtonStyles>({
     buttonTextWhite: {
         fontWeight: "600",
         textAlign: "center",
