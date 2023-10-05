@@ -3,7 +3,9 @@ import {theme} from "../styles/theme";
 
 export type ButtonStyles = {
     buttonTextWhite: TextStyle;
+    buttonTextOrange: TextStyle;
     buttonTextDarkGrey: TextStyle;
+    buttonStyleWhite: ViewStyle;
     buttonStyleOrange: ViewStyle;
     buttonStyleGrey: ViewStyle;
     buttonStyleDarkGrey: ViewStyle;
@@ -17,6 +19,13 @@ export const buttonStyle = StyleSheet.create<ButtonStyles>({
         fontSize: 30,
         color: theme.colors.whiteColor,
     },
+    buttonTextOrange: {
+        fontWeight: "600",
+        textAlign: "center",
+        marginTop: 22,
+        fontSize: 30,
+        color: theme.colors.orangeColor,
+    },
     buttonTextDarkGrey: {
         fontWeight: "600",
         textAlign: "center",
@@ -28,6 +37,12 @@ export const buttonStyle = StyleSheet.create<ButtonStyles>({
         width: 80,
         height: 80,
         backgroundColor: theme.colors.orangeColor,
+        borderRadius: 40,
+    },
+    buttonStyleWhite: {
+        width: 80,
+        height: 80,
+        backgroundColor: theme.colors.whiteColor,
         borderRadius: 40,
     },
     buttonStyleGrey: {
