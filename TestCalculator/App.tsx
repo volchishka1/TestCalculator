@@ -1,19 +1,18 @@
-
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   View,
+  StatusBar,
 } from 'react-native';
 import {CalculatorScreen} from "./src/components/calculatorComponent/Calculator.container";
+import {theme} from "./src/styles/theme";
 
 
 export const App = () => {
 
   return (
-    <SafeAreaView style={styles.backgroundColor}>
+    <SafeAreaView style={styles.safeAreaBackground}>
       <View style={styles.backgroundColor}>
         <CalculatorScreen />
       </View>
@@ -23,11 +22,13 @@ export const App = () => {
 
 const styles = StyleSheet.create({
   backgroundColor: {
-    backgroundColor: "transparent",
+    backgroundColor: theme.colors.blackColor,
     height: "100%",
-    width: "100%",
-    bottom: 10,
-    alignItems: "center"
+    alignItems: "center",
   },
+  safeAreaBackground: {
+    backgroundColor: theme.colors.blackColor,
+  }
+
 });
 
