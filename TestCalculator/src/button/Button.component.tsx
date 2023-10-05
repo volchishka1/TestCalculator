@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
-import {TouchableOpacity, Text, TextProps, TouchableOpacityProps} from 'react-native'
+import {TouchableOpacity, Text} from 'react-native'
 import {buttonStyle} from "./Button.style";
-import {theme} from "../theme";
 
 export type CustomButtonProps = {
     buttonText: string;
