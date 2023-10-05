@@ -1,4 +1,5 @@
 import {StyleSheet, TextStyle, ViewStyle} from "react-native";
+import {theme} from "../../styles/theme";
 
 export type CalculatorScreenStyled = {
     calculatorContainer: ViewStyle;
@@ -13,7 +14,7 @@ export type CalculatorScreenStyled = {
 export const CalculatorScreenStyled = StyleSheet.create<CalculatorScreenStyled>({
     calculatorContainer: {
         position: "absolute",
-        bottom: 0,
+        bottom: 10,
         width: "90%",
     },
     topContainer: {
@@ -23,18 +24,18 @@ export const CalculatorScreenStyled = StyleSheet.create<CalculatorScreenStyled>(
     },
     screenFirstNumber: {
         fontSize: 96,
-        color: "black",
+        color: theme.colors.whiteColor,
         fontWeight: '200',
         alignSelf: "flex-end",
     },
     screenSecondNumber: {
         fontSize: 40,
-        color: "black",
+        color: theme.colors.whiteColor,
         fontWeight: '200',
         alignSelf: "flex-end",
     },
     operator: {
-        color: "black",
+        color: theme.colors.whiteColor,
         fontSize: 50,
         fontWeight: "500",
     },
